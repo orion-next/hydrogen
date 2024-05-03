@@ -1,0 +1,46 @@
+{{- $Subtitle := (.Date | time.Format (":date_medium")) -}}
+
+<div class="b:1;solid;fade-34/.1 r:16 overflow:hidden">
+    {{- $image := partialCached "utilities/image.html" (dict "Context" . "Type" "article") .RelPermalink "article" -}}
+    {{ if $image.exists }}
+        <div class="overflow:hidden">
+            <a href="{{ .RelPermalink }}">
+                {{ if $image.resource }}
+                    {{- $Permalink := $image.resource.RelPermalink -}}
+                    {{- $Width := $image.resource.Width -}}
+                    {{- $Height := $image.resource.Height -}}
+                    {{- $Srcset := "" -}}
+                    
+                    {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                        {{- $thumbnail := $image.resource.Resize "800x" -}}
+                        {{- $thumbnailRetina := $image.resource.Resize "1600x" -}}
+                        {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
+                        {{- $Permalink = $thumbnail.RelPermalink -}}
+                        {{- $Width = $thumbnail.Width -}}
+                        {{- $Height = $thumbnail.Height -}}
+                    {{- end -}}
+
+                    <img 
+                        class="aspect:2/1.25 w:full object:cover scale(1.25):hover transition:all;0.3s;ease-in-out"
+                        src="{{ $Permalink }}"
+                        {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+                        loading="lazy"
+                        alt="Featured Image of Post {{ .Title }}" />
+                {{ else }}
+                    <img class="aspect:2/1.25 w:full object:cover scale(1.25):hover transition:all;0.3s;ease-in-out" src="{{ $image.permalink }}" loading="lazy" alt="Featured Image of Post {{ .Title }}" />
+                {{ end }}
+            </a> 
+        </div>
+    {{ end }}
+    <div class="p:24">
+        <a class="f:18! font:semibold! f:fade-30! text-decoration:none f:fade-10!:hover transition:150ms;ease-in" href="{{ .Permalink }}">
+            {{ .Title }}
+        </a>
+        <div class="mt:12 f:14 f:fade-60">
+            <time>{{ $Subtitle }}</time>
+        </div>
+
+        <p class="mt:20 f:fade-20 lh:1.5">{{ .Description }}</p>
+    </div>
+</div>
+

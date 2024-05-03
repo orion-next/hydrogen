@@ -1,0 +1,259 @@
+.svg-20 svg {
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+  stroke-width: 1.33;
+}
+
+.markdown {
+  @media print {
+
+    *,
+    *:before,
+    *:after {
+      background: transparent !important;
+      color: #000 !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+    }
+
+    a,
+    a:visited {
+      text-decoration: underline;
+    }
+
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+
+    abbr[title]:after {
+      content: " (" attr(title) ")";
+    }
+
+    a[href^="#"]:after,
+    a[href^="javascript:"]:after {
+      content: "";
+    }
+
+    pre,
+    blockquote {
+      border: 1px solid #999;
+      page-break-inside: avoid;
+    }
+
+    thead {
+      display: table-header-group;
+    }
+
+    tr,
+    img {
+      page-break-inside: avoid;
+    }
+
+    img {
+      max-width: 100% !important;
+    }
+
+    p,
+    h2,
+    h3 {
+      orphans: 3;
+      widows: 3;
+    }
+
+    h2,
+    h3 {
+      page-break-after: avoid;
+    }
+  }
+
+  html {
+    font-size: 12px;
+  }
+
+  @media screen and (min-width: 32rem) and (max-width: 48rem) {
+    html {
+      font-size: 15px;
+    }
+  }
+
+  @media screen and (min-width: 48rem) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  body {
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 1.3rem;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+    margin: 1.414rem 0 1.2rem;
+    line-height: 1.2;
+  }
+
+  h1 {
+    margin-top: 0;
+    font-size: 3.998rem;
+  }
+
+  h2 {
+    font-size: 2.827rem;
+  }
+
+  h3 {
+    font-size: 1.999rem;
+  }
+
+  h4 {
+    font-size: 1.414rem;
+  }
+
+  h5 {
+    font-size: 1.121rem;
+  }
+
+  h6 {
+    font-size: .88rem;
+  }
+
+  small {
+    font-size: .707em;
+  }
+
+  /* https://github.com/mrmrs/fluidity */
+
+  img,
+  canvas,
+  iframe,
+  video,
+  svg,
+  select,
+  textarea {
+    max-width: 100%;
+  }
+
+  @import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,300);
+
+  body {
+    color: #444;
+    font-family: 'Open Sans', Helvetica, sans-serif;
+    font-weight: 300;
+    margin: 6rem auto 1rem;
+    max-width: 48rem;
+    text-align: center;
+  }
+
+  img {
+    border-radius: 50%;
+    height: 200px;
+    margin: 0 auto;
+    width: 200px;
+  }
+
+  a,
+  a:visited {
+    color: #3498db;
+  }
+
+  a:hover,
+  a:focus,
+  a:active {
+    color: #2980b9;
+  }
+
+  pre {
+    // background-color: #272822;
+    background-color: rgb(15, 17, 19) !important;
+    padding: 1rem;
+    text-align: left;
+    border-radius: 10px;
+  }
+
+  blockquote {
+    margin: 0;
+    border-left: 5px solid #7A7A7A;
+    padding: 15px;
+    text-align: left;
+
+    p {
+      color: #9A9A9A;
+      margin: 0;
+    }
+  }
+
+  ul,
+  ol,
+  li {
+    text-align: left;
+  }
+
+  p {
+    color: rgb(154, 159, 174);
+    line-height: 1.75;
+  }
+
+  ol, ul {
+    color: rgb(154, 159, 174);
+  }
+
+  ul {
+    margin-bottom: 1.125em;
+    list-style-type: disc;
+    padding-left: 1.5em;
+    word-break: break-word;
+    line-height: 1.75;
+  }
+
+  ol {
+    margin-bottom: 1.125em;
+    padding-left: 1.5em;
+    word-break: break-word;
+
+    ::marker {
+      color: rgb(58, 62, 73)
+    }
+
+    li {
+      padding-left: 0.375em;
+      line-height: 1.75;
+    }
+  }
+
+  table {
+    margin-top: 1.125em;
+    margin-bottom: 1.125em;
+    width: 100%;
+    border-color: inherit;
+    text-indent: 0;
+    color: rgb(215, 216, 223);
+
+    td, th {
+      padding-left: 0rem;
+      padding: 0.375rem;
+      border-bottom: 0.0625rem solid rgba(251, 251, 251, 0.04);
+      font-size: 1rem;
+      color: rgb(215, 216, 223)
+    }
+
+    td {
+      vertical-align: baseline;
+    }
+
+    th {
+      text-align: left;
+      font-weight: 500;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div>
+    <article class="box:border-box w:full">
+        <header>
+            <h2 class="my:1em">Posts</h2>
+        </header>
+        {{ .Content }}
+    </article>
+    <ul>
+        {{- range where site.RegularPages "Type" "in" site.Params.mainSections }}
+            {{- if not .Params.draft }}
+                {{- partial "article/preamble.html" . -}}
+            {{- end }}
+        {{- end }}
+    </ul>
+</div>
+{{ end }}

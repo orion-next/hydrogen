@@ -1,0 +1,60 @@
+{{ define "main" }}
+<article class="box:border-box">
+    <header class="mb:32">
+        {{- $image := partialCached "utilities/image.html" (dict "Context" . "Type" "article") .RelPermalink "article" -}}
+        {{ if $image.exists }}
+        {{- $imageClass := "aspect:1/1 aspect:2/0.75@xs w:full object:cover" -}}
+        <div class="r:16 overflow:hidden mb:32">
+        {{ if $image.resource }}
+            {{- $Permalink := $image.resource.RelPermalink -}}
+            {{- $Width := $image.resource.Width -}}
+            {{- $Height := $image.resource.Height -}}
+            {{- $Srcset := "" -}}
+            
+            {{- if (default true .Page.Site.Params.imageProcessing.cover.enabled) -}}
+                {{- $thumbnail := $image.resource.Resize "800x" -}}
+                {{- $thumbnailRetina := $image.resource.Resize "1600x" -}}
+                {{- $Srcset = printf "%s 800w, %s 1600w" $thumbnail.RelPermalink $thumbnailRetina.RelPermalink -}}
+                {{- $Permalink = $thumbnail.RelPermalink -}}
+                {{- $Width = $thumbnail.Width -}}
+                {{- $Height = $thumbnail.Height -}}
+            {{- end -}}
+
+            <img 
+                class="{{- $imageClass -}}"
+                src="{{ $Permalink }}"
+                {{ with $Srcset }}srcset="{{ . }}"{{ end }}
+                loading="lazy"
+                alt="Featured Image of Post {{ .Title }}" />
+        {{ else }}
+            <img class="{{- $imageClass -}}" src="{{ $image.permalink }}" loading="lazy" alt="Featured Image of Post {{ .Title }}" />
+        {{ end }}
+        </div>
+        {{ end }}
+
+        <div class="font:40 font:bold">{{ .Title }}</div>
+        {{- with .Description }}
+        <div class="mt:16 f:fade-50">
+            <p>{{ . }}</p>
+        </div>
+        {{- end -}}
+        <div class="d:flex mt:16 f:fade-60">
+            {{- if isset .Params "date" -}}
+            <div class="d:inline-flex svg-20 gap:10">
+                {{ partial "utilities/icon.html" "date" }}
+
+                {{ if eq .Lastmod .Date }}
+                <time>{{ .Date | time.Format (":date_medium") }}</time>
+                {{ else }}
+                <time>{{ .Lastmod | time.Format (":date_medium") }}</time>
+                {{ end }}
+            </div>
+            {{- end -}}
+        </div>
+    </header>
+
+    <main class="markdown">
+    {{ .Content }}
+    </main>
+</article>
+{{ end }}

@@ -1,0 +1,19 @@
+{
+  "name": "hydrogen-theme",
+  "version": "1.0.0",
+  "description": "Minimalist blog theme designed for creators and individuals",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/orion-next/hugo-themes.git"
+  },
+  "keywords": [
+    "hugo",
+    "theme",
+    "orion-next",
+    "hydrogen"
+  ],
+  "author": "Vidush H. Namah",
+  "devDependencies": {
+    "firebase-tools": "^13.7.5"
+  }
+}

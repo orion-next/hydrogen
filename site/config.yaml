@@ -1,0 +1,50 @@
+baseURL: "https://orion-next--hydrogen.web.app/"
+
+## 
+#  DEMO PURPOSES ONLY
+#  SET THEME TO "HELIUM" FOR YOUR PROJECT
+##
+theme: "hydrogen-theme"
+
+## 
+#  DEMO PURPOSES ONLY
+#  REMOVE THEMESDIR IN YOUR PROJECT
+##
+themesDir: ../../
+
+title: "Jonathan Smith"
+author: "Jonathan Smith"
+# copyright: "Copyright © 2024 All Rights Reserved."
+
+paginate: 3
+languageCode: "en"
+
+defaultContentLanguage:  "en"
+enableInlineShortcodes: true
+
+# params:
+#   copyright: "Copyright"
+
+menu:
+  main:
+    - identifier: "about"
+      name: "About"
+      url: "/about"
+      weight: 10
+
+    - identifier: "home"
+      name: "Home"
+      url: "/"
+      weight: 1
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+  series: "series"
+
+enableEmoji: true
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
