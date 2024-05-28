@@ -5,6 +5,12 @@
   stroke-width: 1.33;
 }
 
+.author-image {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
 .markdown {
   @media print {
 
@@ -156,10 +162,7 @@
   }
 
   img {
-    border-radius: 50%;
-    height: 200px;
     margin: 0 auto;
-    width: 200px;
   }
 
   a,
